@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2019 at 04:53 AM
+-- Generation Time: Jul 02, 2019 at 07:18 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -49,14 +49,34 @@ INSERT INTO `admin` (`admin_ID`, `Name`, `Password`, `Datelogs`) VALUES
 --
 
 CREATE TABLE `borrower_table` (
-  `Borrower_ID` int(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_number` varchar(50) NOT NULL,
   `FirstName` varchar(100) DEFAULT NULL,
   `LastName` varchar(100) DEFAULT NULL,
-  `ContactNumber` int(50) DEFAULT NULL,
+  `ContactNumber` varchar(50) DEFAULT NULL,
   `Department` varchar(50) DEFAULT NULL,
   `Position` varchar(50) DEFAULT NULL,
-  `EmailID` varchar(50) NOT NULL
+  `EmailID` varchar(50) NOT NULL,
+  `borrow` datetime NOT NULL,
+  `Status` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `borrower_table`
+--
+
+INSERT INTO `borrower_table` (`id`, `id_number`, `FirstName`, `LastName`, `ContactNumber`, `Department`, `Position`, `EmailID`, `borrow`, `Status`) VALUES
+(1, '2014', 'shai', 'celer', '2147483647', NULL, NULL, 'shai@gmail.com', '0000-00-00 00:00:00', 1),
+(2, '2014-15358', 'shaira', 'celerian', '2147483647', NULL, NULL, 'shaiar@gmail.com', '0000-00-00 00:00:00', 1),
+(3, '2014-6565685', 'simplyn', 'madula', '2147483647', NULL, NULL, 'madula@gmail.com', '0000-00-00 00:00:00', 1),
+(4, '2014-15358', 'wattap', 'hey', '2147483647', 'College of Education', 'Student', 'hey@gmail.com', '0000-00-00 00:00:00', 1),
+(5, '2014-15358', 'shaira', 'celerian', '2147483647', 'Institute of Computing', 'Student', 'shairacelerian@gmail.com', '0000-00-00 00:00:00', 1),
+(6, '2014-19596', 'shaira', 'celerian', '2147483647', 'Institute of Computing', 'Faculty and Staff', 'hey@gmail.com', '0000-00-00 00:00:00', 1),
+(7, '2014-19596', 'shaira', 'celerian', '09105824423', 'Institute of Computing', 'Faculty and Staff', 'hey@gmail.com', '0000-00-00 00:00:00', 1),
+(8, '2014-15358', 'haloo', 'heloo', '09105824423', NULL, NULL, 'halo@gmail.com', '0000-00-00 00:00:00', 1),
+(9, '2014-15358', 'sup', 'wat', '09154845552', 'College of Engineering', 'Faculty and Staff', 'watsup@gmail.com', '0000-00-00 00:00:00', 1),
+(10, '2014-65986', 'low', 'hey', '09105824422', 'Institute of Computing', 'Faculty and Staff', 'yea@gmail.com', '0000-00-00 00:00:00', 1),
+(11, '2014-15358', 'sure', 'huyy', '09105824423', 'College of Engineering', 'Student', 'huy@gmail.com', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -66,6 +86,18 @@ CREATE TABLE `borrower_table` (
 
 CREATE TABLE `BorrowPage` (
   `Item_borrowed` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equipment`
+--
+
+CREATE TABLE `equipment` (
+  `id` int(11) NOT NULL,
+  `Type` varchar(100) NOT NULL,
+  `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -105,7 +137,13 @@ ALTER TABLE `admin`
 -- Indexes for table `borrower_table`
 --
 ALTER TABLE `borrower_table`
-  ADD PRIMARY KEY (`Borrower_ID`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `equipment`
+--
+ALTER TABLE `equipment`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `staff_table`
@@ -122,6 +160,18 @@ ALTER TABLE `staff_table`
 --
 ALTER TABLE `admin`
   MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `borrower_table`
+--
+ALTER TABLE `borrower_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `equipment`
+--
+ALTER TABLE `equipment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `staff_table`
